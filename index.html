@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 class="text-center">Customer Order Processing System</h1>
+<h4 class="text-center">CS3402 Group 06</h4>
+<h6 class="text-center">Xinhong LIU 53043714 | Xufeng WU 53043658 | Kangle CHEN 53062661</h6>
+<div class="container">
+    <div class="row">
+        <ul id="report-nav-list" class="col-md-3 nav nav-pills nav-stacked list-group"></ul>
+        <div class="col-md-9">
+            <legend id="report-title">Welcome</legend>
+            <div id="report-intro" class="alert alert-info" style="display: none"></div>
+            <div  class="row">
+                <form id="report-form" class="col-md-6">
+                    <div class="report-control" data-report="welcome">
+                        <p class="lead">
+                            Welcome to XXXX business report system, choose a report from left side.
+                        </p>
+                    </div>
+                    <div class="report-control" data-report="1">
+                        <div class="form-group">
+                            <label>Item ID</label>
+                            <input type="text" class="form-control" name="item_id" placeholder="item id">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="2">
+                        <div class="form-group">
+                            <label>Store ID</label>
+                            <input type="text" class="form-control" name="store_id" placeholder="store id">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="3">
+                        <div class="form-group">
+                            <label>Custom ID</label>
+                            <input type="text" class="form-control" name="custom_id" placeholder="custom id">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="4">
+                        <div class="form-group">
+                            <label>Item ID</label>
+                            <input type="text" class="form-control" name="custom_id" placeholder="custom id">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock level</label>
+                            <input type="number" class="form-control" name="stock_level">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="6">
+                        <div class="form-group">
+                            <label>Custom ID</label>
+                            <input type="text" class="form-control" name="custom_id" placeholder="custom id">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="7">
+                        <div class="form-group">
+                            <label>Item ID</label>
+                            <input type="text" class="form-control" name="custom_id" placeholder="custom id">
+                        </div>
+                        <div class="form-group">
+                            <label>City ID</label>
+                            <input type="number" class="form-control" name="city_id" placeholder="city id">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="8">
+                        <div class="form-group">
+                            <label>Order number</label>
+                            <input type="text" class="form-control" name="order_no" placeholder="order number">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                </form>
+            </div>
+            <div id="result" style="margin-top: 30px">
+                <table class="table table-striped table-bordered">
+                
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<img id="loader" src="img/ajax-loader.gif" style="display: none; position: fixed; margin: auto; top: 0; bottom: 0; left: 0; right: 0;">
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
