@@ -22,31 +22,115 @@
                             Welcome to XXXX business report system, choose a report from left side.
                         </p>
                     </div>
+                    <div class="report-control" data-report="Item">
+                        <div class="form-group">
+                            <label>Item ID[<a class="show-item"></a>]</label>
+                            <input type="number" class="form-control" name="item_id" placeholder="item id">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="dscp" placeholder="Emmmm...">
+                        </div>
+                        <div class="form-group">
+                            <label>Size</label>
+                            <input type="number" class="form-control" name="size">
+                        </div>
+                        <div class="form-group">
+                            <label>Weight</label>
+                            <input type="number" step="any" class="form-control" name="weight">
+                        </div>
+                        <div class="form-group">
+                            <label>Unit price</label>
+                            <input type="number" step="any" class="form-control" name="price">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="Customer">
+                        <div class="form-group">
+                            <label>Customer ID[<a class="show-customer"></a>]</label>
+                            <input type="number" class="form-control" name="customer_id" placeholder="customer id">
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Emmmm...">
+                        </div>
+                        <div class="form-group">
+                            <label>First order date</label>
+                            <input type="date" class="form-control" name="fod">
+                        </div>
+                        <div class="form-group">
+                            <label>City ID</label>
+                            <input type="number" class="form-control" name="city_id">
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select class="form-control" name="type">
+                                <option value="1" selected>Person</option>
+                                <option value="2">Government</option>
+                                <option value="3">Company</option>
+                            </select>
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="Order">
+                        <div class="form-group">
+                            <label>Order ID[<a class="show-order"></a>]</label>
+                            <input type="number" class="form-control" name="order_id" placeholder="order id">
+                        </div>
+                        <div class="form-group">
+                            <label>Order date</label>
+                            <input type="date" class="form-control" name="od">
+                        </div>
+                        <div class="form-group">
+                            <label>Customer ID[<a class="show-customer"></a>]</label>
+                            <input type="number" class="form-control" name="customer_id">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
+                    <div class="report-control" data-report="Order Item">
+                        <div class="form-group">
+                            <label>Order ID[<a class="show-order"></a>]</label>
+                            <input type="number" class="form-control" name="order_id" placeholder="order id">
+                        </div>
+                        <div class="form-group">
+                            <label>Item ID[<a class="show-item"></a>]</label>
+                            <input type="number" class="form-control" name="item_id" placeholder="item id">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="number" class="form-control" name="quantity">
+                        </div>
+                        <div class="form-group">
+                            <label>Unit price</label>
+                            <input type="number" step="any" class="form-control" name="price">
+                        </div>
+                        <a class="btn btn-default" href="#">Submit</a>
+                    </div>
                     <div class="report-control" data-report="1">
                         <div class="form-group">
-                            <label>Item ID</label>
+                            <label>Item ID[<a class="show-item"></a>]</label>
                             <input type="text" class="form-control" name="item_id" placeholder="item id">
                         </div>
                         <a class="btn btn-default" href="#">Submit</a>
                     </div>
                     <div class="report-control" data-report="2">
                         <div class="form-group">
-                            <label>Store ID</label>
+                            <label>Store ID[<a class="show-store"></a>]</label>
                             <input type="text" class="form-control" name="store_id" placeholder="store id">
                         </div>
                         <a class="btn btn-default" href="#">Submit</a>
                     </div>
                     <div class="report-control" data-report="3">
                         <div class="form-group">
-                            <label>Custom ID</label>
-                            <input type="text" class="form-control" name="custom_id" placeholder="custom id">
+                            <label>Customer ID[<a class="show-customer"></a>]</label>
+                            <input type="text" class="form-control" name="customer_id" placeholder="customer id">
                         </div>
                         <a class="btn btn-default" href="#">Submit</a>
                     </div>
                     <div class="report-control" data-report="4">
                         <div class="form-group">
-                            <label>Item ID</label>
-                            <input type="text" class="form-control" name="custom_id" placeholder="custom id">
+                            <label>Item ID[<a class="show-item"></a>]</label>
+                            <input type="text" class="form-control" name="item_id" placeholder="item id">
                         </div>
                         <div class="form-group">
                             <label>Stock level</label>
@@ -56,15 +140,15 @@
                     </div>
                     <div class="report-control" data-report="6">
                         <div class="form-group">
-                            <label>Custom ID</label>
-                            <input type="text" class="form-control" name="custom_id" placeholder="custom id">
+                            <label>Customer ID[<a class="show-customer"></a>]</label>
+                            <input type="text" class="form-control" name="customer_id" placeholder="customer id">
                         </div>
                         <a class="btn btn-default" href="#">Submit</a>
                     </div>
                     <div class="report-control" data-report="7">
                         <div class="form-group">
-                            <label>Item ID</label>
-                            <input type="text" class="form-control" name="custom_id" placeholder="custom id">
+                            <label>Item ID[<a class="show-item"></a>]</label>
+                            <input type="text" class="form-control" name="item_id" placeholder="item id">
                         </div>
                         <div class="form-group">
                             <label>City ID</label>
@@ -75,16 +159,14 @@
                     <div class="report-control" data-report="8">
                         <div class="form-group">
                             <label>Order number</label>
-                            <input type="text" class="form-control" name="order_no" placeholder="order number">
+                            <input type="text" class="form-control" name="order_id" placeholder="order number">
                         </div>
                         <a class="btn btn-default" href="#">Submit</a>
                     </div>
                 </form>
             </div>
             <div id="result" style="margin-top: 30px">
-                <table class="table table-striped table-bordered">
                 
-                </table>
             </div>
         </div>
     </div>

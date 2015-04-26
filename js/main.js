@@ -7,36 +7,47 @@ function hideLoader() {
 }
 
 function clearData() {
-    $('#result table').children().remove();
+    $('#result').children().remove();
 }
 
-function loadData(keys, data) {
-    var tbody = $.parseHTML('<tbody>');
-    // make head
-    var thHtmlStr = '<tr>';
-    for (var i = 0; i < keys.length; i++) {
-        thHtmlStr += '<th>' + keys[i] + '</th>';
+function loadData(datas) {
+    for (var i = 0; i < datas.length; i++) {
+        var table = $.parseHTML
+            ('<table class="table table-striped table-bordered"></table>');
+        var tbody = $.parseHTML('<tbody>');
+
+        var data = datas[i];
+        if (data.length == 0) {
+            $(tbody).text('No data');
+        } else {
+            var keys = Object.keys(data[0]);
+            // make head
+            var thHtmlStr = '<tr>';
+            for (var j = 0; j < keys.length; j++) {
+                thHtmlStr += '<th>' + keys[j] + '</th>';
+            }
+            thHtmlStr += '</tr>';
+
+            $(tbody).append($.parseHTML(thHtmlStr));
+
+            for (var k = 0; k < data.length; k++) {
+                var tdHtmlStr = '<tr>'
+                for (var j = 0; j < keys.length; j++) {
+                    tdHtmlStr += '<td>' + data[k][keys[j]] + '</td>';
+                };
+                tdHtmlStr += '</tr>';
+                $(tbody).append($.parseHTML(tdHtmlStr));
+            };
+        }
+        $(table).append(tbody);
+        $('#result').append(table);
     }
-    thHtmlStr += '</tr>';
-
-    $(tbody).append($.parseHTML(thHtmlStr));
-
-    for (var i = 0; i < data.length; i++) {
-        var tdHtmlStr = '<tr>'
-        for (var j = 0; j < keys.length; j++) {
-            tdHtmlStr += '<td>' + data[i][keys[j]] + '</td>';
-        };
-        tdHtmlStr += '</tr>';
-        $(tbody).append($.parseHTML(tdHtmlStr));
-    };
-
-    $('#result table').append(tbody);
 }
 
 function makeNavItem(reportNo, intro, auto) {
     var htmlStr = 
                  '<a href="#" class="list-group-item" data-report="' + reportNo + '" data-intro="' + intro + '" title="' + intro + '">\
-                    <h4 class="list-group-item-heading">Report ' + reportNo + '</h4>\
+                    <h4 class="list-group-item-heading">' + (isNaN(reportNo)? reportNo : 'Report ' + reportNo) + '</h4>\
                     <p class="list-group-item-text">' + intro.substr(0, 60) + '...</p>\
                   </a>';
     var ele = $.parseHTML(htmlStr);
@@ -45,6 +56,22 @@ function makeNavItem(reportNo, intro, auto) {
 }
 
 var reports = [
+    {
+        'no': 'Customer',
+        'intro': 'Add customer'
+    },
+    {
+        'no': 'Item',
+        'intro': 'Add item'
+    },
+    {
+        'no': 'Order',
+        'intro': 'Add order'
+    },
+    {
+        'no': 'Order Item',
+        'intro': 'Add items to order'
+    },
     {
         'no': 1,
         'intro': 'Find all the stores along with city, state, phone, description, size, weight and unit price that hold a particular item of stock.'
@@ -121,7 +148,7 @@ function onFormSubmit(e, reportNo) {
         || $(this).parent().attr('data-report');
     var controls = $(this).parent().find('.form-group > *[name]');
     for (var i = controls.length - 1; i >= 0; i--) {
-        params[$(controls).attr('name')] = $(controls).val();
+        params[$(controls[i]).attr('name')] = $(controls[i]).val();
     };
     console.log(params);
     showLoader();
@@ -132,13 +159,23 @@ function onFormSubmit(e, reportNo) {
         method: 'POST',
         success: function(data) {
             hideLoader();
-            var keys = Object.keys(data[0]);
             clearData();
-            loadData(keys, data);
+            loadData(data);
         },
         error: function() {
             hideLoader();
         }
+    });
+}
+
+function addDataList(params, name) {
+    $.get('list.php?table=' + params, function(data) {
+        var datalist = $.parseHTML('<datalist id="' + params + '-list' + '"></datalist>');
+        for (var i = 0; i < data.length; i++) {
+            $(datalist).append($.parseHTML('<option value="' + data[i] + '">'));
+        };
+        $('body').append(datalist);
+        $('input[name="' + name + '"]').attr('list', params + '-list');
     });
 }
 
@@ -155,4 +192,19 @@ $(function() {
     // only show welcome message
     $('.report-control').hide();
     $('.report-control[data-report="welcome"]').fadeIn();
+    // generate show all button
+    $('a.show-item').text('show all').attr('href', 'all.php?table=Item')
+        .attr('target', '_blank');
+    $('a.show-customer').text('show all').attr('href', 'all.php?table=Customer')
+        .attr('target', '_blank');
+    $('a.show-store').text('show all').attr('href', 'all.php?table=Store')
+        .attr('target', '_blank');
+    $('a.show-order').text('show all').attr('href', 'all.php?table=Orders')
+        .attr('target', '_blank');
+    // add datalist
+    addDataList('Item', 'item_id');
+    addDataList('Store', 'store_id');
+    addDataList('Customer', 'customer_id');
+    addDataList('City', 'city_id');
+    addDataList('Orders', 'order_id');
 });

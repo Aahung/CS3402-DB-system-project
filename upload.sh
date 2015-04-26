@@ -1,4 +1,4 @@
 #/bin/bash
 
-rsync --progress -a * root@128.199.255.194:/var/www/html/
+rsync --progress -a * root@3402.ml:/var/www/html/
 
