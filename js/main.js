@@ -73,6 +73,10 @@ var reports = [
         'intro': 'Add items to order'
     },
     {
+        'no': 'Order Query',
+        'intro': 'See order detail'
+    },
+    {
         'no': 1,
         'intro': 'Find all the stores along with city, state, phone, description, size, weight and unit price that hold a particular item of stock.'
     },

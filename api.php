@@ -95,6 +95,11 @@ if ($report_no == '1') {
         $arr[0] = get_array($conn -> query($sql));
     } else {$arr[0][0]['result'] = $conn->error;}
     echo json_encode($arr);
+} else if ($report_no == 'Order Query') {
+    $arr = array();
+    $sql = "SELECT * FROM Contain_item WHERE Order_id = {$_POST['order_id']}";
+    $arr[0] = get_array($conn -> query($sql));
+    echo json_encode($arr);
 } else if ($report_no == '2') {
     $arr = array();
     $sql = "SELECT DISTINCT(Contain_item.Order_id), Orders.Customer_id, Orders.Order_date FROM Contain_item 
