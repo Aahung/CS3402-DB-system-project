@@ -1,4 +1,5 @@
 <?php
+ob_start("ob_gzhandler");
 require('keys.php');
 $conn = new mysqli($db_info['host'], $db_info['user'], $db_info['pass'], $db_info['database']);
 if(mysqli_connect_errno()) {
@@ -131,7 +132,7 @@ if ($report_no == '1') {
             LEFT JOIN Hold_item ON Hold_item.Item_id = Contain_item.Item_id 
             LEFT JOIN Store ON Store.Store_id = Hold_item.Store_id
             LEFT JOIN City ON City.City_id = Store.City_id
-            ORDER BY Contain_item.Order_id LIMIT 0, 100";
+            ORDER BY Contain_item.Order_id LIMIT 0, 1000"; // 1000 is for limit the output
     $arr[0] = get_array($conn -> query($sql));
     echo json_encode($arr);
 } else if ($report_no == '6') {

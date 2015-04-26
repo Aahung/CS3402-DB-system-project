@@ -1,4 +1,5 @@
-<?php 
+<?php
+ob_start("ob_gzhandler"); 
 require('keys.php');
 $conn = new mysqli($db_info['host'], $db_info['user'], $db_info['pass'], $db_info['database']);
 if(mysqli_connect_errno()) {
